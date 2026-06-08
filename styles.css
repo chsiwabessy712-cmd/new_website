@@ -1,0 +1,41 @@
+body {
+    background-color: #000814;
+    color: #f8f9fa;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000814;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1c2541;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffc300;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.animate-marquee {
+    animation: marquee 25s linear infinite;
+}
+
+.marquee-container:hover .animate-marquee {
+    animation-play-state: paused;
+}

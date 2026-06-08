@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chrono | Premium Watch Collection</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navyDark: '#000814',
+                        offWhite: '#f8f9fa',
+                        goldAccent: '#ffc300',
+                        gradStart: '#3a0ca3',
+                        gradEnd: '#560bad',
+                        cardBg: '#0b132b',
+                        cardBorder: '#1c2541'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'neon-gold': '0 10px 30px rgba(255, 195, 0, 0.15)',
+                        'neon-violet': '0 10px 40px rgba(90, 11, 173, 0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="font-sans overflow-x-hidden">
+
+    <!-- Navigation Bar -->
+    <nav
+        class="fixed top-0 left-0 w-full z-50 bg-navyDark/70 backdrop-blur-xl border-b border-white/10 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Left Side Navbar -->
+            <div class="flex items-center gap-10">
+                <a href="#home" class="flex items-center gap-2 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-gradient-to-tr from-gradStart to-gradEnd flex items-center justify-center shadow-neon-violet group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-clock text-goldAccent text-lg"></i>
+                    </div>
+                    <span
+                        class="text-xl font-bold tracking-wider text-offWhite font-serif group-hover:text-goldAccent transition-colors">mywatch.com</span>
+                </a>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#home"
+                        class="text-offWhite hover:text-goldAccent transition-colors text-sm font-semibold tracking-wide uppercase">Home</a>
+                    <a href="#about"
+                        class="text-offWhite hover:text-goldAccent transition-colors text-sm font-semibold tracking-wide uppercase">About</a>
+                    <a href="#collections"
+                        class="text-offWhite hover:text-goldAccent transition-colors text-sm font-semibold tracking-wide uppercase">Collection</a>
+                    <a href="#shop"
+                        class="text-offWhite hover:text-goldAccent transition-colors text-sm font-semibold tracking-wide uppercase">Shop</a>
+                </div>
+            </div>
+
+            <!-- Right Side Navbar -->
+            <div class="flex items-center gap-6">
+                <a href="#testimonials"
+                    class="hidden lg:inline-block text-offWhite hover:text-goldAccent transition-colors text-sm font-semibold tracking-wide uppercase">Reviews</a>
+                <a href="#contact"
+                    class="hidden lg:inline-block text-offWhite hover:text-goldAccent transition-colors text-sm font-semibold tracking-wide uppercase">Contact</a>
+
+                <!-- Cart Button -->
+                <button onclick="toggleCart()"
+                    class="relative p-2.5 rounded-full bg-cardBg hover:bg-cardBorder transition-all border border-white/15 shadow-md">
+                    <i class="fa-solid fa-bag-shopping text-goldAccent text-lg"></i>
+                    <span id="cart-badge"
+                        class="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+
+                <!-- Mobile Navigation Toggle -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-offWhite focus:outline-none text-2xl">
+                    <i id="menu-icon" class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-navyDark border-b border-white/10 px-6 py-4 flex flex-col gap-4">
+            <a href="#home" onclick="toggleMobileMenu()"
+                class="text-offWhite hover:text-goldAccent transition-colors text-lg py-2">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()"
+                class="text-offWhite hover:text-goldAccent transition-colors text-lg py-2">About</a>
+            <a href="#collections" onclick="toggleMobileMenu()"
+                class="text-offWhite hover:text-goldAccent transition-colors text-lg py-2">Collection</a>
+            <a href="#shop" onclick="toggleMobileMenu()"
+                class="text-offWhite hover:text-goldAccent transition-colors text-lg py-2">Shop</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()"
+                class="text-offWhite hover:text-goldAccent transition-colors text-lg py-2">Reviews</a>
+            <a href="#contact" onclick="toggleMobileMenu()"
+                class="text-offWhite hover:text-goldAccent transition-colors text-lg py-2">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen pt-28 flex flex-col justify-center relative overflow-hidden px-6 lg:px-12">
+        <!-- Visual Backdrop Splines styled like wireframe layout -->
+        <div
+            class="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-gradStart/15 to-transparent pointer-events-none rounded-r-[200px] blur-3xl">
+        </div>
+        <div
+            class="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-gradEnd/15 to-transparent pointer-events-none rounded-l-[200px] blur-3xl">
+        </div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 py-12">
+
+            <!-- Hero Left: Headlines and Call to Action -->
+            <div class="lg:col-span-5 text-left space-y-8" data-aos="fade-right">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cardBg border border-white/10">
+                    <span class="w-2.5 h-2.5 rounded-full bg-goldAccent animate-pulse"></span>
+                    <span class="text-xs uppercase tracking-widest text-goldAccent font-semibold">New Edition 2026
+                        Collection</span>
+                </div>
+
+                <h1 class="text-5xl sm:text-6xl font-serif font-bold text-offWhite leading-tight">
+                    Get Your New <br>
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-goldAccent via-[#ffe066] to-goldAccent">Edition
+                        Watch</span>
+                </h1>
+
+                <h3 class="text-xl text-goldAccent font-medium tracking-wide font-sans">
+                    Futuristic, Modern, and Luxury
+                </h3>
+
+                <p class="text-gray-400 text-base leading-loose max-w-lg">
+                    A premium watch curated for alignment with your lifestyle. Explore masterpieces crafted for
+                    professionals, young casual trendsetters, high-end business figures, and luxury connoisseurs.
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#shop"
+                        class="px-8 py-3.5 bg-gradient-to-r from-gradStart to-gradEnd rounded-full font-semibold text-sm uppercase tracking-wider text-offWhite hover:shadow-neon-violet hover:scale-105 transition-all duration-500">
+                        Explore Now
+                    </a>
+                    <a href="#collections"
+                        class="px-8 py-3.5 bg-transparent border border-white/20 hover:border-goldAccent rounded-full font-semibold text-sm uppercase tracking-wider text-offWhite hover:text-goldAccent hover:scale-105 transition-all duration-500">
+                        Gallery Show
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Center: Visual Masterpiece Showcase Frame -->
+            <div class="lg:col-span-5 flex justify-center items-center relative py-12" data-aos="zoom-in"
+                data-aos-delay="200">
+                <!-- Outer Gradient Ring with Glowing Splines matching Desktop - 1.jpg geometry -->
+                <div
+                    class="absolute w-[320px] h-[320px] sm:w-[450px] sm:h-[450px] rounded-full bg-gradient-to-b from-gradStart to-gradEnd opacity-20 blur-2xl animate-pulse">
+                </div>
+
+                <div
+                    class="relative w-[280px] h-[360px] sm:w-[360px] sm:h-[460px] bg-gradient-to-b from-[#111] to-navyDark rounded-[40px] border border-white/10 shadow-2xl flex flex-col overflow-hidden group">
+                    <!-- Glassmorphism accent background grid elements -->
+                    <div class="absolute inset-0 bg-grid-white opacity-[0.03] pointer-events-none"></div>
+                    <div
+                        class="absolute -top-12 -left-12 w-40 h-40 bg-gradStart rounded-full filter blur-3xl opacity-45">
+                    </div>
+                    <div
+                        class="absolute -bottom-12 -right-12 w-40 h-40 bg-gradEnd rounded-full filter blur-3xl opacity-45">
+                    </div>
+
+                    <!-- Main Showcase Watch Render -->
+                    <div id="main-watch-container"
+                        class="relative z-10 w-full h-full transition-transform duration-500 hover:scale-105 flex flex-col">
+                        <img id="main-watch-img"
+                            src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&q=80&w=600"
+                            alt="Watch Masterpiece" class="w-full h-full object-cover transition-all duration-500"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x500/0b132b/ffc300?text=Premium+Watch';">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Right: Product Preview Selectors -->
+            <div class="lg:col-span-2 flex flex-row lg:flex-col justify-center gap-6 items-center" data-aos="fade-left"
+                data-aos-delay="400">
+                <button onclick="switchHeroWatch(0)"
+                    class="watch-sel-btn active group w-20 h-20 rounded-xl border-2 border-goldAccent bg-cardBg overflow-hidden transition-all shadow-neon-gold scale-105"
+                    data-index="0">
+                    <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&q=80&w=200"
+                        alt="Preview 1"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </button>
+                <button onclick="switchHeroWatch(1)"
+                    class="watch-sel-btn group w-20 h-20 rounded-xl border border-white/10 hover:border-goldAccent bg-navyDark overflow-hidden transition-all hover:scale-105"
+                    data-index="1">
+                    <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&q=80&w=200"
+                        alt="Preview 2"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-70 group-hover:opacity-100">
+                </button>
+                <button onclick="switchHeroWatch(2)"
+                    class="watch-sel-btn group w-20 h-20 rounded-xl border border-white/10 hover:border-goldAccent bg-navyDark overflow-hidden transition-all hover:scale-105"
+                    data-index="2">
+                    <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&q=80&w=200"
+                        alt="Preview 3"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-70 group-hover:opacity-100">
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Partner Strip Section -->
+        <div class="border-y border-white/10 bg-[#020d20] py-8 mt-12 overflow-hidden relative marquee-container">
+            <!-- Fade edges -->
+            <div
+                class="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[#020d20] to-transparent z-10 pointer-events-none">
+            </div>
+            <div
+                class="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-[#020d20] to-transparent z-10 pointer-events-none">
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 mb-6">
+                <p class="text-center text-xs tracking-widest text-gray-400 uppercase font-semibold relative z-20">
+                    Featured Brands & Partners</p>
+            </div>
+
+            <div class="flex overflow-hidden w-full">
+                <!-- First List -->
+                <div class="flex shrink-0 items-center gap-12 lg:gap-20 pr-12 lg:pr-20 animate-marquee opacity-60">
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-gem text-goldAccent text-sm"></i> OMEGA
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-shield text-goldAccent text-sm"></i> ROLEX
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-crown text-goldAccent text-sm"></i> PATEK PHILIPPE
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-certificate text-goldAccent text-sm"></i> AUDEMARS PIGUET
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-star text-goldAccent text-sm"></i> TAG HEUER
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-ring text-goldAccent text-sm"></i> CARTIER
+                    </div>
+                </div>
+                <!-- Second List (Duplicate) -->
+                <div class="flex shrink-0 items-center gap-12 lg:gap-20 pr-12 lg:pr-20 animate-marquee opacity-60"
+                    aria-hidden="true">
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-gem text-goldAccent text-sm"></i> OMEGA
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-shield text-goldAccent text-sm"></i> ROLEX
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-crown text-goldAccent text-sm"></i> PATEK PHILIPPE
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-certificate text-goldAccent text-sm"></i> AUDEMARS PIGUET
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-star text-goldAccent text-sm"></i> TAG HEUER
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-ring text-goldAccent text-sm"></i> CARTIER
+                    </div>
+                </div>
+                <!-- Third List (Duplicate) -->
+                <div class="flex shrink-0 items-center gap-12 lg:gap-20 pr-12 lg:pr-20 animate-marquee opacity-60"
+                    aria-hidden="true">
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-gem text-goldAccent text-sm"></i> OMEGA
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-shield text-goldAccent text-sm"></i> ROLEX
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-crown text-goldAccent text-sm"></i> PATEK PHILIPPE
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-certificate text-goldAccent text-sm"></i> AUDEMARS PIGUET
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-star text-goldAccent text-sm"></i> TAG HEUER
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-ring text-goldAccent text-sm"></i> CARTIER
+                    </div>
+                </div>
+                <!-- Fourth List (Duplicate) -->
+                <div class="flex shrink-0 items-center gap-12 lg:gap-20 pr-12 lg:pr-20 animate-marquee opacity-60"
+                    aria-hidden="true">
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-gem text-goldAccent text-sm"></i> OMEGA
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-shield text-goldAccent text-sm"></i> ROLEX
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-crown text-goldAccent text-sm"></i> PATEK PHILIPPE
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-certificate text-goldAccent text-sm"></i> AUDEMARS PIGUET
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-star text-goldAccent text-sm"></i> TAG HEUER
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-offWhite font-serif text-lg tracking-wider font-semibold whitespace-nowrap">
+                        <i class="fa-solid fa-ring text-goldAccent text-sm"></i> CARTIER
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Brand Narrative (Wireframe Sections 01, 02, 03) -->
+    <section id="about" class="py-24 max-w-7xl mx-auto px-6 lg:px-12 space-y-24">
+
+        <!-- Row 1: Top Tech Gear (Image Left, Text Right) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 relative group" data-aos="fade-right">
+                <div
+                    class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-gradStart to-gradEnd filter blur opacity-30 group-hover:opacity-50 transition duration-1000">
+                </div>
+                <div
+                    class="relative bg-cardBg rounded-3xl overflow-hidden border border-white/15 h-[350px] sm:h-[450px] flex items-center justify-center">
+                    <span
+                        class="absolute top-6 left-6 text-7xl font-serif font-black text-white/5 select-none z-10">01</span>
+                    <img src="https://globalboutique.com/wp-content/uploads/2023/05/featured-gold-watches-800x600.jpg"
+                        alt="Tech Gear watch"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                        onerror="this.onerror=null; this.src='https://placehold.co/500x400/0b132b/ffc300?text=Tech+Gear';">
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 text-left space-y-6" data-aos="fade-left" data-aos-delay="200">
+                <div class="w-12 h-1 bg-gradient-to-r from-goldAccent to-transparent"></div>
+                <h2 class="text-4xl font-serif font-bold text-offWhite">Top Tech Gear <br>For Your Lifestyle</h2>
+                <p class="text-gray-400 leading-loose text-base">
+                    Engineered to blend cutting-edge materials with pristine physical elegance. This professional grade
+                    chronometer provides precision craftsmanship, sapphire dial crystal, and high performance components
+                    matching your busy lifestyle structure perfectly.
+                </p>
+                <p class="text-gray-400 leading-loose text-sm">
+                    Perfect for formal encounters and precision execution, giving you confidence and control under any
+                    timeline.
+                </p>
+                <div class="pt-2">
+                    <button
+                        onclick="openModal('Top Tech Gear', 'Engineered to blend cutting-edge components with pristine physical elegance. Specially designed for high-paced work environments, formal galas, and precision management meetings, keeping you sharp and timed perfectly.')"
+                        class="px-6 py-3 bg-gradient-to-r from-gradStart to-gradEnd text-white font-semibold text-xs uppercase tracking-wider rounded-lg shadow-md hover:shadow-neon-violet hover:scale-105 transition-all">
+                        Read More
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2: We Crafted Through Time (Text Left, Image Right) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 lg:order-2 relative group" data-aos="fade-left">
+                <div
+                    class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-gradStart to-gradEnd filter blur opacity-30 group-hover:opacity-50 transition duration-1000">
+                </div>
+                <div
+                    class="relative bg-cardBg rounded-3xl overflow-hidden border border-white/15 h-[350px] sm:h-[450px] flex items-center justify-center">
+                    <span
+                        class="absolute top-6 right-6 text-7xl font-serif font-black text-white/5 select-none z-10">02</span>
+                    <img src="https://zealande.com/cdn/shop/articles/1689684177_Masque_Everything_to_luxury_a5525bc7-938f-4420-9d85-52bc17cce507.webp?v=1765554196"
+                        alt="Crafted Through Time watch"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                        onerror="this.onerror=null; this.src='https://placehold.co/500x400/0b132b/ffc300?text=Craftsmanship';">
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 lg:order-1 text-left space-y-6" data-aos="fade-right" data-aos-delay="200">
+                <div class="w-12 h-1 bg-gradient-to-r from-goldAccent to-transparent"></div>
+                <h2 class="text-4xl font-serif font-bold text-offWhite">We Crafted <br>Through Time</h2>
+                <p class="text-gray-400 leading-loose text-base">
+                    Behind every bezel is a century of watchmaking heritage. Our master craftsmen utilize premium
+                    caliber automatic movements, ensuring each dynamic piece functions flawlessly across generations.
+                </p>
+                <p class="text-gray-400 leading-loose text-sm">
+                    Our legacy focuses on hand-assembled engineering designed explicitly for collectors who truly
+                    appreciate horological uniqueness.
+                </p>
+                <div class="pt-2">
+                    <button
+                        onclick="openModal('We Crafted Through Time', 'Our heritage watch series represent premium collector pieces. Handcrafted in low batches, featuring high-beat mechanical engines, visible display sapphire backplates, and solid gold casing embellishments.')"
+                        class="px-6 py-3 bg-gradient-to-r from-gradStart to-gradEnd text-white font-semibold text-xs uppercase tracking-wider rounded-lg shadow-md hover:shadow-neon-violet hover:scale-105 transition-all">
+                        Read More
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 3: Feel the elegance (Image Left, Text Right) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 relative group" data-aos="fade-right">
+                <div
+                    class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-gradStart to-gradEnd filter blur opacity-30 group-hover:opacity-50 transition duration-1000">
+                </div>
+                <div
+                    class="relative bg-cardBg rounded-3xl overflow-hidden border border-white/15 h-[350px] sm:h-[450px] flex items-center justify-center">
+                    <span
+                        class="absolute top-6 left-6 text-7xl font-serif font-black text-white/5 select-none z-10">03</span>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJPQO5iG5IQ9BHWLAGth0tVGf2HJAluF6ihg&s"
+                        alt="Elegance watch"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                        onerror="this.onerror=null; this.src='https://placehold.co/500x400/0b132b/ffc300?text=Elegance';">
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 text-left space-y-6" data-aos="fade-left" data-aos-delay="200">
+                <div class="w-12 h-1 bg-gradient-to-r from-goldAccent to-transparent"></div>
+                <h2 class="text-4xl font-serif font-bold text-offWhite">Feel the elegance <br>On Your Wrist</h2>
+                <p class="text-gray-400 leading-loose text-base">
+                    Redefining luxury wristwear with minimalist curves and breathtaking structural lines. This bespoke
+                    series integrates perfectly with formal business tailoring, presenting an exclusive aura of
+                    prestige.
+                </p>
+                <p class="text-gray-400 leading-loose text-sm">
+                    An aesthetic balance of precious materials, tailored deployment clasps, and ultra-thin profiles.
+                </p>
+                <div class="pt-2">
+                    <button
+                        onclick="openModal('Feel the Elegance', 'Bespoke design detailing for modern business figures. Combining lightweight titanium structures with highly polished elements and premium luxury design aesthetics for ultimate style.')"
+                        class="px-6 py-3 bg-gradient-to-r from-gradStart to-gradEnd text-white font-semibold text-xs uppercase tracking-wider rounded-lg shadow-md hover:shadow-neon-violet hover:scale-105 transition-all">
+                        Read More
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Exclusive Collections Grid Section -->
+    <section id="collections" class="py-24 bg-cardBg/40 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+
+            <div class="mb-16" data-aos="fade-up">
+                <span class="text-sm font-semibold tracking-widest text-goldAccent uppercase">Curated
+                    Masterpieces</span>
+                <h2 class="text-4xl sm:text-5xl font-serif font-bold text-offWhite mt-3">Our Exclusive Collections</h2>
+                <p class="text-gray-400 mt-4 max-w-xl mx-auto">
+                    A beautiful layout grid capturing individual watch lifestyles, special discounts, and high prestige
+                    designs.
+                </p>
+            </div>
+
+            <!-- Grid of 4 columns, 2 rows (Offset alternating layout from Wireframe) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" data-aos="fade-up" data-aos-delay="200">
+
+                <!-- Row 1, Col 1: Image Card -->
+                <div
+                    class="h-[280px] rounded-2xl bg-gradient-to-b from-[#111] to-navyDark border border-white/10 overflow-hidden relative group">
+                    <img src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&q=80&w=500"
+                        alt="Lux Gold Watch"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 filter brightness-75 group-hover:brightness-90"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x300/0b132b/ffc300?text=Premium';">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navyDark via-transparent to-transparent"></div>
+                    <span class="absolute bottom-6 left-6 text-sm font-semibold text-goldAccent">Chrono Gold Core</span>
+                </div>
+
+                <!-- Row 1, Col 2: Text Card "Worst Luxury Style" or "World Luxury Style" -->
+                <div
+                    class="h-[280px] rounded-2xl bg-cardBg border border-goldAccent/30 p-8 flex flex-col justify-center text-left relative overflow-hidden group hover:border-goldAccent transition-colors">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-gradStart/10 rounded-full blur-2xl"></div>
+                    <i class="fa-solid fa-gem text-goldAccent text-2xl mb-4"></i>
+                    <h3 class="text-xl font-serif font-bold text-offWhite">World Luxury Style</h3>
+                    <p class="text-gray-400 text-sm mt-3 leading-loose">
+                        Experience bespoke luxury and mechanical precision matched purely for distinguished
+                        connoisseurs.
+                    </p>
+                    <a href="#shop"
+                        class="text-goldAccent text-xs font-bold uppercase tracking-wider mt-4 flex items-center gap-2 group-hover:gap-3 transition-all">Explore
+                        <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+
+                <!-- Row 1, Col 3: Image Card -->
+                <div
+                    class="h-[280px] rounded-2xl bg-gradient-to-b from-[#111] to-navyDark border border-white/10 overflow-hidden relative group">
+                    <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&q=80&w=500"
+                        alt="Titanium Watch"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 filter brightness-75 group-hover:brightness-90"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x300/0b132b/ffc300?text=Titanium';">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navyDark via-transparent to-transparent"></div>
+                    <span class="absolute bottom-6 left-6 text-sm font-semibold text-goldAccent">Vanguard
+                        Titanium</span>
+                </div>
+
+                <!-- Row 1, Col 4: Text Card "Up to 50% Off" -->
+                <div
+                    class="h-[280px] rounded-2xl bg-gradient-to-br from-gradStart to-gradEnd border border-white/10 p-8 flex flex-col justify-center text-left relative overflow-hidden group hover:scale-[1.02] transition-transform">
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
+                    <span
+                        class="bg-goldAccent text-navyDark font-bold text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full w-max mb-4">Exclusive
+                        Deal</span>
+                    <h3 class="text-2xl font-serif font-bold text-offWhite">Up to 50% Off</h3>
+                    <p class="text-white/80 text-sm mt-3 leading-loose">
+                        Treat yourself to dynamic premium collections with limited tier membership pricing available
+                        this week.
+                    </p>
+                    <a href="#shop"
+                        class="text-goldAccent text-xs font-bold uppercase tracking-wider mt-4 flex items-center gap-2">View
+                        Deals <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+
+                <!-- Row 2, Col 1: Text Card "The Noblest Watch" -->
+                <div
+                    class="h-[280px] rounded-2xl bg-cardBg border border-goldAccent/30 p-8 flex flex-col justify-center text-left relative overflow-hidden group hover:border-goldAccent transition-colors md:order-5">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-gradEnd/10 rounded-full blur-2xl"></div>
+                    <i class="fa-solid fa-crown text-goldAccent text-2xl mb-4"></i>
+                    <h3 class="text-xl font-serif font-bold text-offWhite">The Noblest Watch</h3>
+                    <p class="text-gray-400 text-sm mt-3 leading-loose">
+                        A dynamic array representing precision, nobility, premium physical stature, and unmatched
+                        reliability.
+                    </p>
+                    <a href="#shop"
+                        class="text-goldAccent text-xs font-bold uppercase tracking-wider mt-4 flex items-center gap-2 group-hover:gap-3 transition-all">Explore
+                        <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+
+                <!-- Row 2, Col 2: Image Card -->
+                <div
+                    class="h-[280px] rounded-2xl bg-gradient-to-b from-[#111] to-navyDark border border-white/10 overflow-hidden relative group md:order-6">
+                    <img src="https://images.unsplash.com/photo-1622434641406-a158123450f9?auto=format&fit=crop&q=80&w=500"
+                        alt="Nobility Watch"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 filter brightness-75 group-hover:brightness-90"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x300/0b132b/ffc300?text=Prestige';">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navyDark via-transparent to-transparent"></div>
+                    <span class="absolute bottom-6 left-6 text-sm font-semibold text-goldAccent">Sovereign
+                        Obsidian</span>
+                </div>
+
+                <!-- Row 2, Col 3: Text Card "Branded Collection" -->
+                <div
+                    class="h-[280px] rounded-2xl bg-cardBg border border-goldAccent/30 p-8 flex flex-col justify-center text-left relative overflow-hidden group hover:border-goldAccent transition-colors md:order-7">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-gradStart/10 rounded-full blur-2xl"></div>
+                    <i class="fa-solid fa-award text-goldAccent text-2xl mb-4"></i>
+                    <h3 class="text-xl font-serif font-bold text-offWhite">Branded Collection</h3>
+                    <p class="text-gray-400 text-sm mt-3 leading-loose">
+                        Handcrafted watches sourced with fully authentic international certifications and serial tracks.
+                    </p>
+                    <a href="#shop"
+                        class="text-goldAccent text-xs font-bold uppercase tracking-wider mt-4 flex items-center gap-2 group-hover:gap-3 transition-all">Explore
+                        <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+
+                <!-- Row 2, Col 4: Image Card -->
+                <div
+                    class="h-[280px] rounded-2xl bg-gradient-to-b from-[#111] to-navyDark border border-white/10 overflow-hidden relative group md:order-8">
+                    <img src="https://images.unsplash.com/photo-1539874754764-5a96559165b0?auto=format&fit=crop&q=80&w=500"
+                        alt="Branded Watch"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 filter brightness-75 group-hover:brightness-90"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x300/0b132b/ffc300?text=Branded';">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navyDark via-transparent to-transparent"></div>
+                    <span class="absolute bottom-6 left-6 text-sm font-semibold text-goldAccent">Legacy Nautilus</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop By Collection Section -->
+    <section id="shop" class="py-24 max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <span class="text-sm font-semibold tracking-widest text-goldAccent uppercase">Shop by Collection</span>
+            <h2 class="text-4xl sm:text-5xl font-serif font-bold text-offWhite mt-3">Curated Wristwear Styles</h2>
+            <p class="text-gray-400 mt-4 max-w-xl mx-auto">
+                Explore a gorgeous catalog of 12 distinct luxury watches customized for casual, professional, and luxury
+                styles. Use filters or paginated navigation below.
+            </p>
+
+            <!-- Category Filtering Tabbed Navigation -->
+            <div class="flex flex-wrap justify-center gap-4 mt-8">
+                <button onclick="filterShop('all')" id="tab-all"
+                    class="tab-btn px-6 py-2.5 rounded-full bg-goldAccent text-navyDark font-semibold text-xs uppercase tracking-wider transition-all duration-500">
+                    All Lifestyles
+                </button>
+                <button onclick="filterShop('casual')" id="tab-casual"
+                    class="tab-btn px-6 py-2.5 rounded-full bg-cardBg border border-white/10 hover:border-goldAccent text-offWhite font-semibold text-xs uppercase tracking-wider transition-all duration-500">
+                    Casual Trends
+                </button>
+                <button onclick="filterShop('professional')" id="tab-professional"
+                    class="tab-btn px-6 py-2.5 rounded-full bg-cardBg border border-white/10 hover:border-goldAccent text-offWhite font-semibold text-xs uppercase tracking-wider transition-all duration-500">
+                    Professional (Formal)
+                </button>
+                <button onclick="filterShop('luxury')" id="tab-luxury"
+                    class="tab-btn px-6 py-2.5 rounded-full bg-cardBg border border-white/10 hover:border-goldAccent text-offWhite font-semibold text-xs uppercase tracking-wider transition-all duration-500">
+                    Luxury & Collector
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Grid Dynamic Display Container -->
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500"
+            data-aos="fade-up" data-aos-delay="200">
+            <!-- Dynamic Injection of Products -->
+        </div>
+
+        <!-- Custom Pagination / Slider Control Panel -->
+        <div class="flex items-center justify-between mt-12 pt-8 border-t border-white/10">
+            <div class="text-xs text-gray-400 font-semibold tracking-wider">
+                Showing <span id="pag-start" class="text-goldAccent">1</span>-<span id="pag-end"
+                    class="text-goldAccent">3</span> of <span id="pag-total" class="text-goldAccent">12</span> Premium
+                Watches
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="prevPage()"
+                    class="w-11 h-11 rounded-full border border-white/10 hover:border-goldAccent bg-cardBg flex items-center justify-center text-offWhite hover:text-goldAccent transition-all disabled:opacity-30 disabled:pointer-events-none"
+                    id="btn-prev">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <div class="flex gap-1" id="pagination-dots">
+                    <!-- Dots generated dynamically -->
+                </div>
+                <button onclick="nextPage()"
+                    class="w-11 h-11 rounded-full border border-white/10 hover:border-goldAccent bg-cardBg flex items-center justify-center text-offWhite hover:text-goldAccent transition-all disabled:opacity-30 disabled:pointer-events-none"
+                    id="btn-next">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / Reviews Section -->
+    <section id="testimonials" class="py-24 bg-cardBg/30 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-sm font-semibold tracking-widest text-goldAccent uppercase">Client Testimonials</span>
+                <h2 class="text-4xl sm:text-5xl font-serif font-bold text-offWhite mt-3">Feedback From Our Patrons</h2>
+                <p class="text-gray-400 mt-4 max-w-xl mx-auto">
+                    Each review reflects premium customer satisfaction, showcasing our focus on quality, luxury, and
+                    reliable shipping.
+                </p>
+            </div>
+
+            <!-- 6 Testimonials Grid matching Desktop - 1.jpg structure -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Review 1 -->
+                <div
+                    class="bg-cardBg border border-white/10 rounded-2xl p-8 flex flex-col justify-between hover:border-goldAccent/40 hover:-translate-y-1 transition-all duration-500">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-goldAccent">
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                        </div>
+                        <h4 class="text-lg font-serif font-bold text-offWhite">Sed ut perspiciatis</h4>
+                        <p class="text-gray-400 text-sm leading-loose">
+                            "The customer service was stellar! My professional chronograph arrived perfectly balanced.
+                            It fits my business suits beautifully."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-6 mt-6 border-t border-white/5">
+                        <div
+                            class="w-12 h-12 rounded-full overflow-hidden bg-cardBorder flex items-center justify-center border border-goldAccent">
+                            <i class="fa-solid fa-user-tie text-xl text-goldAccent"></i>
+                        </div>
+                        <div>
+                            <span class="text-sm font-bold block text-offWhite">Marcus Vance</span>
+                            <button
+                                onclick="openModal('Marcus Vance - Review', 'Marcus Vance is a corporate executive based in Chicago who purchased our Chrono Gold Master. He rated us 5/5 stars for fast transit, secure packaging, and flawless alignment.')"
+                                class="text-goldAccent text-xs font-semibold hover:underline mt-0.5">Learn more</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div
+                    class="bg-cardBg border border-white/10 rounded-2xl p-8 flex flex-col justify-between hover:border-goldAccent/40 hover:-translate-y-1 transition-all duration-500">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-goldAccent">
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                        </div>
+                        <h4 class="text-lg font-serif font-bold text-offWhite">Lorem ipsum dolor</h4>
+                        <p class="text-gray-400 text-sm leading-loose">
+                            "Absolutely incredible craftsmanship. The casual Vanguard piece wears extremely light on the
+                            wrist. I get compliments daily!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-6 mt-6 border-t border-white/5">
+                        <div
+                            class="w-12 h-12 rounded-full overflow-hidden bg-cardBorder flex items-center justify-center border border-goldAccent">
+                            <i class="fa-solid fa-user-ninja text-xl text-goldAccent"></i>
+                        </div>
+                        <div>
+                            <span class="text-sm font-bold block text-offWhite">Clara Thorne</span>
+                            <button
+                                onclick="openModal('Clara Thorne - Review', 'Clara Thorne is a digital creator who loves our minimalist casual series. She praises the sapphire dial glass and premium water resistance during her travel vlogs.')"
+                                class="text-goldAccent text-xs font-semibold hover:underline mt-0.5">Learn more</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div
+                    class="bg-cardBg border border-white/10 rounded-2xl p-8 flex flex-col justify-between hover:border-goldAccent/40 hover:-translate-y-1 transition-all duration-500">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-goldAccent">
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                        </div>
+                        <h4 class="text-lg font-serif font-bold text-offWhite">Nemo enim ipsam</h4>
+                        <p class="text-gray-400 text-sm leading-loose">
+                            "As a passionate collector, I appreciate genuine automatic movements. The details on my
+                            sovereign Obsidian watch are immaculate."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-6 mt-6 border-t border-white/5">
+                        <div
+                            class="w-12 h-12 rounded-full overflow-hidden bg-cardBorder flex items-center justify-center border border-goldAccent">
+                            <i class="fa-solid fa-user-astronaut text-xl text-goldAccent"></i>
+                        </div>
+                        <div>
+                            <span class="text-sm font-bold block text-offWhite">Devon Vance</span>
+                            <button
+                                onclick="openModal('Devon Vance - Review', 'Devon Vance is a private horological collector who possesses more than fifty premium mechanical models. He emphasizes the accuracy and finish of our movements.')"
+                                class="text-goldAccent text-xs font-semibold hover:underline mt-0.5">Learn more</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 4 -->
+                <div
+                    class="bg-cardBg border border-white/10 rounded-2xl p-8 flex flex-col justify-between hover:border-goldAccent/40 hover:-translate-y-1 transition-all duration-500">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-goldAccent">
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                        </div>
+                        <h4 class="text-lg font-serif font-bold text-offWhite">Sed ut perspiciatis</h4>
+                        <p class="text-gray-400 text-sm leading-loose">
+                            "The gold bezel reflects light so naturally. Ordering was seamless, and the physical
+                            collection box feels like absolute luxury."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-6 mt-6 border-t border-white/5">
+                        <div
+                            class="w-12 h-12 rounded-full overflow-hidden bg-cardBorder flex items-center justify-center border border-goldAccent">
+                            <i class="fa-solid fa-user text-xl text-goldAccent"></i>
+                        </div>
+                        <div>
+                            <span class="text-sm font-bold block text-offWhite">Julian Stark</span>
+                            <button
+                                onclick="openModal('Julian Stark - Review', 'Julian Stark bought the limited Gold Crown series as an anniversary gift. He highlighted our personalized engravings and customer outreach.')"
+                                class="text-goldAccent text-xs font-semibold hover:underline mt-0.5">Learn more</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 5 -->
+                <div
+                    class="bg-cardBg border border-white/10 rounded-2xl p-8 flex flex-col justify-between hover:border-goldAccent/40 hover:-translate-y-1 transition-all duration-500">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-goldAccent">
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs font-regular text-gray-600"></i>
+                        </div>
+                        <h4 class="text-lg font-serif font-bold text-offWhite">Lorem ipsum dolor</h4>
+                        <p class="text-gray-400 text-sm leading-loose">
+                            "Superb professional watch! Simple dial profile with maximum visual presence. The calendar
+                            dial tracks precisely."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-6 mt-6 border-t border-white/5">
+                        <div
+                            class="w-12 h-12 rounded-full overflow-hidden bg-cardBorder flex items-center justify-center border border-goldAccent">
+                            <i class="fa-solid fa-user-graduate text-xl text-goldAccent"></i>
+                        </div>
+                        <div>
+                            <span class="text-sm font-bold block text-offWhite">Samantha Lee</span>
+                            <button
+                                onclick="openModal('Samantha Lee - Review', 'Samantha Lee is an architect who bought our Steel Chrono to keep visual track of multiple project timelines. She highly recommends the dark steel link mesh.')"
+                                class="text-goldAccent text-xs font-semibold hover:underline mt-0.5">Learn more</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 6 -->
+                <div
+                    class="bg-cardBg border border-white/10 rounded-2xl p-8 flex flex-col justify-between hover:border-goldAccent/40 hover:-translate-y-1 transition-all duration-500">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-goldAccent">
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                            <i class="fa-solid fa-star text-xs"></i>
+                        </div>
+                        <h4 class="text-lg font-serif font-bold text-offWhite">Nemo enim ipsam</h4>
+                        <p class="text-gray-400 text-sm leading-loose">
+                            "Fast dynamic shipping. Outstanding luxury weight and authentic leather straps. Will buy
+                            other editions soon!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-6 mt-6 border-t border-white/5">
+                        <div
+                            class="w-12 h-12 rounded-full overflow-hidden bg-cardBorder flex items-center justify-center border border-goldAccent">
+                            <i class="fa-solid fa-user-tag text-xl text-goldAccent"></i>
+                        </div>
+                        <div>
+                            <span class="text-sm font-bold block text-offWhite">Robert Chen</span>
+                            <button
+                                onclick="openModal('Robert Chen - Review', 'Robert Chen bought the casual leather band sports edition. He rated us 5 stars for fast 2-day delivery with customized notifications.')"
+                                class="text-goldAccent text-xs font-semibold hover:underline mt-0.5">Learn more</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+            <!-- Contact Info and Map (Left Side) -->
+            <div class="lg:col-span-6 space-y-8">
+                <div>
+                    <span class="text-sm font-semibold tracking-widest text-goldAccent uppercase">Get In Touch</span>
+                    <h2 class="text-4xl font-serif font-bold text-offWhite mt-3">Find Our Boutique</h2>
+                    <p class="text-gray-400 mt-4 leading-loose">
+                        Have inquiries regarding exclusive collectors editions, sizing adjustments, or secure vault
+                        deliveries? Reach out or visit our local retail lounges directly.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="flex items-start gap-4 p-4 rounded-xl bg-cardBg border border-white/5">
+                        <div class="p-3 rounded-lg bg-gradient-to-tr from-gradStart to-gradEnd text-goldAccent">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-offWhite text-sm">Boutique Headquarters</h4>
+                            <p class="text-gray-400 text-xs mt-1">452 Luxury Way, Suite 10, New York, NY</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 rounded-xl bg-cardBg border border-white/5">
+                        <div class="p-3 rounded-lg bg-gradient-to-tr from-gradStart to-gradEnd text-goldAccent">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-offWhite text-sm">Direct Support</h4>
+                            <p class="text-gray-400 text-xs mt-1">concierge@mywatch.com</p>
+                            <p class="text-gray-400 text-xs">+1 (555) 304-9002</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Interactive Map Mockup matching dark luxury theme -->
+                <div
+                    class="h-[280px] rounded-2xl bg-gradient-to-b from-[#111] to-navyDark border border-white/10 relative overflow-hidden group">
+                    <!-- Retro Glowing Cyberpunk Grid Map Visualization -->
+                    <div
+                        class="absolute inset-0 bg-[radial-gradient(#1c2541_1px,transparent_1px)] [background-size:16px_16px] opacity-40">
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <!-- Abstract vector map contours using glowing circles -->
+                        <div
+                            class="absolute w-[200px] h-[200px] border border-gradStart/30 rounded-full animate-ping opacity-10">
+                        </div>
+                        <div
+                            class="absolute w-[300px] h-[300px] border border-gradEnd/20 rounded-full animate-pulse opacity-15">
+                        </div>
+
+                        <!-- Location Markers -->
+                        <div class="relative z-10 flex flex-col items-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-goldAccent flex items-center justify-center text-navyDark shadow-neon-gold animate-bounce">
+                                <i class="fa-solid fa-clock text-xs"></i>
+                            </div>
+                            <span
+                                class="bg-cardBg px-3 py-1.5 rounded-lg border border-goldAccent text-[10px] font-bold tracking-widest uppercase text-offWhite mt-2 shadow-lg">New
+                                York Lounge</span>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute bottom-4 left-4 bg-navyDark/70 backdrop-blur-xl px-3 py-2 rounded-lg border border-white/10 text-[10px] text-gray-400">
+                        Interactive Store Finder Grid
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form (Right Side) -->
+            <div
+                class="lg:col-span-6 bg-cardBg border border-white/15 rounded-3xl p-8 lg:p-10 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-gradStart/15 rounded-full blur-3xl pointer-events-none">
+                </div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradEnd/15 rounded-full blur-3xl pointer-events-none">
+                </div>
+
+                <h3 class="text-2xl font-serif font-bold text-offWhite mb-2">Send Secure Inquiry</h3>
+                <p class="text-gray-400 text-sm mb-8">Our luxury concierge team responds within 12 business hours.</p>
+
+                <form id="contact-form" onsubmit="submitContact(event)" class="space-y-6 relative z-10">
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-goldAccent font-semibold mb-2">Full
+                            Name</label>
+                        <input type="text" required placeholder="e.g. Alexander Sterling"
+                            class="w-full bg-navyDark/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-offWhite focus:outline-none focus:border-goldAccent transition-colors">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label
+                                class="block text-xs uppercase tracking-widest text-goldAccent font-semibold mb-2">Email
+                                Address</label>
+                            <input type="email" required placeholder="e.g. alex@luxury.com"
+                                class="w-full bg-navyDark/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-offWhite focus:outline-none focus:border-goldAccent transition-colors">
+                        </div>
+                        <div>
+                            <label
+                                class="block text-xs uppercase tracking-widest text-goldAccent font-semibold mb-2">Watch
+                                Style Interest</label>
+                            <select
+                                class="w-full bg-navyDark/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-offWhite focus:outline-none focus:border-goldAccent transition-colors">
+                                <option class="bg-navyDark">Chrono Gold</option>
+                                <option class="bg-navyDark">Sporty Navy</option>
+                                <option class="bg-navyDark">Modern Steel</option>
+                                <option class="bg-navyDark">Other Custom Order</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label
+                            class="block text-xs uppercase tracking-widest text-goldAccent font-semibold mb-2">Inquiry
+                            Message</label>
+                        <textarea required rows="4"
+                            placeholder="Detail your specific sizing, band styles, or delivery instructions..."
+                            class="w-full bg-navyDark/60 border border-white/10 rounded-xl px-4 py-3 text-sm text-offWhite focus:outline-none focus:border-goldAccent transition-colors"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-4 rounded-xl bg-gradient-to-r from-gradStart to-gradEnd font-semibold text-xs uppercase tracking-widest text-offWhite hover:shadow-neon-violet hover:scale-[1.01] transition-all">
+                        Submit Inquiry Request
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="border-t border-white/10 bg-[#020914] pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16">
+
+            <!-- Column 1: Brand Info -->
+            <div class="lg:col-span-4 space-y-6">
+                <a href="#home" class="flex items-center gap-2">
+                    <div
+                        class="w-9 h-9 rounded-full bg-gradient-to-tr from-gradStart to-gradEnd flex items-center justify-center">
+                        <i class="fa-solid fa-clock text-goldAccent text-base"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-wider text-offWhite font-serif">mywatch.com</span>
+                </a>
+                <p class="text-gray-400 text-sm leading-loose max-w-sm">
+                    Helping users find fine wristwear aligned perfectly with individual lifestyles, professional
+                    environments, and prestige requirements.
+                </p>
+                <div class="flex gap-3">
+                    <a href="#"
+                        class="w-9 h-9 rounded-full bg-cardBg border border-white/10 flex items-center justify-center text-gray-400 hover:text-goldAccent hover:border-goldAccent transition-all"><i
+                            class="fa-brands fa-facebook-f text-sm"></i></a>
+                    <a href="#"
+                        class="w-9 h-9 rounded-full bg-cardBg border border-white/10 flex items-center justify-center text-gray-400 hover:text-goldAccent hover:border-goldAccent transition-all"><i
+                            class="fa-brands fa-instagram text-sm"></i></a>
+                    <a href="#"
+                        class="w-9 h-9 rounded-full bg-cardBg border border-white/10 flex items-center justify-center text-gray-400 hover:text-goldAccent hover:border-goldAccent transition-all"><i
+                            class="fa-brands fa-x-twitter text-sm"></i></a>
+                    <a href="#"
+                        class="w-9 h-9 rounded-full bg-cardBg border border-white/10 flex items-center justify-center text-gray-400 hover:text-goldAccent hover:border-goldAccent transition-all"><i
+                            class="fa-brands fa-youtube text-sm"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Services Links -->
+            <div class="lg:col-span-2 space-y-4">
+                <h4 class="text-xs uppercase tracking-widest text-goldAccent font-bold">Services</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#shop" class="hover:text-goldAccent transition-colors">Bespoke Fitting</a></li>
+                    <li><a href="#shop" class="hover:text-goldAccent transition-colors">Global Delivery</a></li>
+                    <li><a href="#shop" class="hover:text-goldAccent transition-colors">Vault Insurance</a></li>
+                    <li><a href="#about" class="hover:text-goldAccent transition-colors">Gift Consultations</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Community Links -->
+            <div class="lg:col-span-2 space-y-4">
+                <h4 class="text-xs uppercase tracking-widest text-goldAccent font-bold">Community</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#testimonials" class="hover:text-goldAccent transition-colors">Patron Reviews</a></li>
+                    <li><a href="#about" class="hover:text-goldAccent transition-colors">Collector Forums</a></li>
+                    <li><a href="#home" class="hover:text-goldAccent transition-colors">Annual Gala 2026</a></li>
+                    <li><a href="#collections" class="hover:text-goldAccent transition-colors">VIP Lounge Access</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Career / Legal Links -->
+            <div class="lg:col-span-2 space-y-4">
+                <h4 class="text-xs uppercase tracking-widest text-goldAccent font-bold">Careers</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-goldAccent transition-colors">Horologist Hiring</a></li>
+                    <li><a href="#" class="hover:text-goldAccent transition-colors">Internships</a></li>
+                    <li><a href="#" class="hover:text-goldAccent transition-colors">Designer Roles</a></li>
+                    <li><a href="#" class="hover:text-goldAccent transition-colors">Media Kit</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 5: Newsletter Register Sign Up -->
+            <div class="lg:col-span-2 space-y-4">
+                <h4 class="text-xs uppercase tracking-widest text-goldAccent font-bold">Register</h4>
+                <p class="text-gray-400 text-xs">Sign up for early drops and luxury gala tickets.</p>
+                <div class="space-y-2">
+                    <input type="email" placeholder="Email Address"
+                        class="w-full bg-navyDark border border-white/15 rounded-lg px-3 py-2 text-xs text-offWhite focus:outline-none focus:border-goldAccent">
+                    <button onclick="registerNewsletter()"
+                        class="w-full py-2 rounded-lg bg-gradient-to-r from-gradStart to-gradEnd font-semibold text-[10px] uppercase tracking-wider text-offWhite hover:shadow-neon-violet transition-all">
+                        Sign Up
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div
+            class="border-t border-white/5 pt-8 text-center max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-400">
+            <p>&copy; 2026 Chrono mywatch.com. Created for Christian Siwabessy. All Rights Reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-goldAccent">Privacy Policy</a>
+                <a href="#" class="hover:text-goldAccent">Terms of Service</a>
+                <a href="#" class="hover:text-goldAccent">Cookie Setup</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Slide-out Shopping Cart Drawer -->
+    <div id="cart-drawer"
+        class="fixed inset-y-0 right-0 w-full sm:w-[450px] bg-navyDark border-l border-white/10 z-50 transform translate-x-full transition-transform duration-500 shadow-2xl flex flex-col justify-between">
+
+        <!-- Cart Header -->
+        <div class="p-6 border-b border-white/10 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-bag-shopping text-goldAccent text-xl"></i>
+                <h3 class="text-lg font-serif font-bold text-offWhite">Your Select Luxury Cart</h3>
+            </div>
+            <button onclick="toggleCart()" class="text-gray-400 hover:text-goldAccent text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cart-items" class="p-6 overflow-y-auto flex-grow space-y-4">
+            <!-- Dynamically populated products -->
+            <div class="flex flex-col items-center justify-center h-full text-center space-y-4">
+                <i class="fa-solid fa-box-open text-gray-600 text-5xl"></i>
+                <p class="text-gray-400">Your shopping cart is currently empty.</p>
+                <a href="#shop" onclick="toggleCart()"
+                    class="px-6 py-2 bg-gradient-to-r from-gradStart to-gradEnd rounded-full text-xs font-semibold uppercase text-offWhite hover:shadow-neon-violet">Browse
+                    Shop</a>
+            </div>
+        </div>
+
+        <!-- Cart Footer -->
+        <div class="p-6 border-t border-white/10 bg-[#020914] space-y-4">
+            <div class="flex items-center justify-between text-sm">
+                <span class="text-gray-400">Estimated Vault Subtotal:</span>
+                <span id="cart-subtotal" class="font-serif font-bold text-goldAccent text-lg">$0.00</span>
+            </div>
+            <div class="flex items-center justify-between text-xs text-gray-400">
+                <span>Fully insured fast global delivery</span>
+                <span class="text-green-500">Free</span>
+            </div>
+            <button onclick="checkout()"
+                class="w-full py-3.5 rounded-xl bg-gradient-to-r from-gradStart to-gradEnd text-offWhite font-semibold text-xs uppercase tracking-widest hover:shadow-neon-violet hover:scale-[1.01] transition-all">
+                Proceed To Secure Checkout
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Custom Information Detail Modal (Custom Alert Replacement) -->
+    <div id="info-modal"
+        class="fixed inset-0 bg-navyDark/85 backdrop-blur-sm z-50 hidden flex items-center justify-center p-6">
+        <div
+            class="bg-cardBg border border-goldAccent/30 rounded-3xl max-w-md w-full p-8 shadow-2xl space-y-6 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-goldAccent text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div
+                class="w-12 h-12 rounded-full bg-gradient-to-tr from-gradStart to-gradEnd flex items-center justify-center text-goldAccent">
+                <i class="fa-solid fa-circle-info text-xl"></i>
+            </div>
+            <div class="space-y-2">
+                <h3 id="modal-title" class="text-2xl font-serif font-bold text-offWhite">Info Details</h3>
+                <p id="modal-desc" class="text-gray-400 text-sm leading-loose">
+                    Default info text template.
+                </p>
+            </div>
+            <div class="flex justify-end pt-4">
+                <button onclick="closeModal()"
+                    class="px-6 py-2.5 bg-gradient-to-r from-gradStart to-gradEnd rounded-lg text-xs font-semibold uppercase text-offWhite hover:shadow-neon-violet">
+                    Understood
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Purchase Feedback Alert Popup -->
+    <div id="purchase-alert"
+        class="fixed bottom-6 right-6 z-50 transform translate-y-12 opacity-0 pointer-events-none transition-all duration-500">
+        <div
+            class="bg-gradient-to-r from-gradStart to-gradEnd border border-goldAccent p-4 rounded-xl shadow-xl flex items-center gap-4">
+            <div class="w-8 h-8 rounded-full bg-navyDark flex items-center justify-center text-goldAccent">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+                <span id="alert-msg-title" class="text-xs font-bold uppercase tracking-wider text-goldAccent block">Item
+                    Added</span>
+                <p id="alert-msg-body" class="text-offWhite text-xs">Watch added to security shopping cart.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="script.js"></script>
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: "ease-out-cubic",
+            once: true,
+            offset: 50
+        });
+    </script>
+</body>
+
+</html>
